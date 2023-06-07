@@ -171,11 +171,11 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
   const checkbox = document.getElementById("enableFormCheckbox");
   const formContainer = document.querySelector(".form-container");
   const emailInput = document.getElementById("email");
-  const submitButton = document.querySelector("input[type='submit']");
+  const submitButton = document.querySelector("input[name='file_submit']");
 
   checkbox.addEventListener("change", function () {
     if (checkbox.checked) {
