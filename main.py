@@ -1,6 +1,5 @@
 import os
 import threading
-import docker
 from flask import Flask, render_template, request, redirect
 
 # Create the app
