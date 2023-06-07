@@ -172,17 +172,35 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const checkbox = document.getElementById("enableFormCheckbox");
-      const formContainer = document.querySelector(".form-container");
+  const checkbox = document.getElementById("enableFormCheckbox");
+  const formContainer = document.querySelector(".form-container");
+  const emailInput = document.getElementById("email");
+  const submitButton = document.querySelector("input[type='submit']");
 
-      checkbox.addEventListener("change", function () {
-        if (checkbox.checked) {
-          formContainer.classList.add("show");
-        } else {
-          formContainer.classList.remove("show");
-        }
-      });
-    });
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      formContainer.classList.add("show");
+    } else {
+      formContainer.classList.remove("show");
+    }
+  });
+
+  emailInput.addEventListener("input", function () {
+    if (validateEmail(emailInput.value)) {
+      emailInput.setCustomValidity("");
+      submitButton.disabled = false;
+    } else {
+      emailInput.setCustomValidity("Please enter a valid @fhict.nl email address");
+      submitButton.disabled = true;
+    }
+  });
+
+  function validateEmail(email) {
+    const pattern = /^[a-zA-Z0-9._%+-]+@fhict\.nl$/;
+    return pattern.test(email);
+  }
+});
+
   </script>
 </body>
 </html>
