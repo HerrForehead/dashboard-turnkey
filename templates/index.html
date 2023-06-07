@@ -105,11 +105,30 @@
   </div>
 
   <div class="dashboard">
-    <form action="/result" method="POST">
+    <form action="/result" method="POST" onsubmit="return validateEmail()">
       <div class="form-group">
         <label for="email">Enter your email (@fhict.nl):</label>
-        <input type="email" name="email" id="email" pattern="[a-zA-Z0-9._%+-]+@fhict\.nl$" title="Please enter a valid @fhict.nl email address" required>
+        <input type="email" name="email" id="email" required>
       </div>
+      <!-- Rest of the form -->
+      <input type="submit" name="file_submit" value="Submit">
+    </form>
+    
+    <script>
+      function validateEmail() {
+        var emailInput = document.getElementById("email");
+        var email = emailInput.value;
+    
+        // Check if the email ends with "@fhict.nl"
+        if (!email.endsWith("@fhict.nl")) {
+          alert("Please enter a valid @fhict.nl email address");
+          return false; // Prevent form submission
+        }
+    
+        return true; // Allow form submission
+      }
+    </script>
+    
       <div class="form-group">
         <label for="password">Enter password:</label>
         <input type="password" name="password" id="password" placeholder="Your password" required>
