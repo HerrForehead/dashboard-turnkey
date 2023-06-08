@@ -34,7 +34,8 @@ def result():
         print(networks.decode())
     except subprocess.CalledProcessError as e:
         print("Error occurred:", e.returncode)
-        print("Error output:", e.networks.decode())
+        print("Error output:", e.output.decode())
+
 
 
     return render_template("index.html")
