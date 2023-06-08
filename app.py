@@ -1,5 +1,6 @@
 import os
 import threading
+import subprocess
 from flask import Flask, render_template, request, redirect
 
 # Create the app
@@ -28,17 +29,10 @@ def result():
     output = request.form.to_dict()
     print(output)
     
-    # Any code we want to run goes here
+    output = subprocess.check_output(['python3', 'gathernetworks.py'])
+    print(output.decode())
 
     return render_template("index.html")
-
-# This code will be unused
-@app.route("/remove", methods=['POST', "GET"])
-def remove():
-    output = request.form.to_dict()
-    print(output)
-
-    return redirect("/")
 
 # Run the app
 if __name__ == '__main__':
