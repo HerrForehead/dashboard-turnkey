@@ -29,8 +29,13 @@ def result():
     output = request.form.to_dict()
     print(output)
     
-    output = subprocess.check_output(['python3', 'gathernetworks.py'])
-    print(output.decode())
+    try:
+        output = subprocess.check_output(['python3', 'gathernetworks.py'], stderr=subprocess.STDOUT)
+        print(output.decode())
+    except subprocess.CalledProcessError as e:
+        print("Error occurred:", e.returncode)
+        print("Error output:", e.output.decode())
+
 
     return render_template("index.html")
 
