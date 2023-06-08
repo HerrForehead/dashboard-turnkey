@@ -30,11 +30,11 @@ def result():
     print(output)
     
     try:
-        output = subprocess.check_output(['python3', 'gathernetworks.py'], stderr=subprocess.STDOUT)
-        print(output.decode())
+        networks = subprocess.check_output(['python3', '/home/student/dashboard-turn-key/gathernetworks.py'], stderr=subprocess.STDOUT)
+        print(networks.decode())
     except subprocess.CalledProcessError as e:
         print("Error occurred:", e.returncode)
-        print("Error output:", e.output.decode())
+        print("Error output:", e.networks.decode())
 
 
     return render_template("index.html")
