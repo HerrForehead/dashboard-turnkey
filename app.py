@@ -1,9 +1,11 @@
 import os
 import threading
 from flask import Flask, render_template, request, redirect
+from flask_sslify import SSLify
 
 # Create the app
 app = Flask(__name__)
+sslify = SSLify(app)
 
 # Renders the home page
 @app.route('/')
