@@ -1,11 +1,16 @@
 import os
 import threading
 from flask import Flask, render_template, request, redirect
-from flask_sslify import SSLify
 
 # Create the app
 app = Flask(__name__)
-sslify = SSLify(app)
+
+# Force redirect to HTTPS
+@app.before_request
+def force_https():
+    if request.endpoint in app.view_functions and not request.is_secure:
+        return redirect(request.url.replace('http://', 'https://'))
+
 
 # Renders the home page
 @app.route('/')
