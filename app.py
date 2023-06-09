@@ -28,13 +28,15 @@ def home():
 def result():
     output = request.form.to_dict()
     print(output)
-    
-    try:
-        networks = subprocess.check_output(['python3', '/home/student/dashboard-turn-key/gathernetworks.py'], stderr=subprocess.STDOUT)
-        print(networks.decode())
-    except subprocess.CalledProcessError as e:
-        print("Error occurred:", e.returncode)
-        print("Error output:", e.output.decode())
+    return render_template("result.html")
+
+
+@app.route("/login", methods=['POST', "GET"])
+def login():
+    output = request.form.to_dict()
+    print(output)
+    return render_template("login.html")
+
 
 
 
