@@ -5,7 +5,7 @@ from pyVim import connect
 from flask import Flask, render_template, request, redirect
 
 # Add the networks to this list after retrieving them via retrieve_network_devices()
-networks1 = []
+networkslist = []
 
 
 def print_network(network, level):
@@ -52,7 +52,7 @@ def retrieve_network_devices(username, password):
                 networks = vds_vlan_folder.childEntity
                 for network in networks:
                     #print(network.name)
-                    networks1.append("test")
+                    networkslist.append("test")
                     print_network(network, 0)
 
 
@@ -103,9 +103,9 @@ def login():
     print("Retrieving network devices...")
     retrieve_network_devices(credentials['email'], credentials['password'])
     print("Heading to configure page...")
-    print(networks1)
+    print(networkslist)
 
-    return render_template("configure.html", networks=networks1)
+    return render_template("configure.html", networks=networkslist)
 
 # Renders the configure page
 @app.route('/configure', methods=['GET', 'POST'])
