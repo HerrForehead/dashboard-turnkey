@@ -59,6 +59,9 @@ def retrieve_network_devices(username, password):
 # Create the app
 app = Flask(__name__)
 
+# Placeholder of networks until we can retrieve them from vSphere
+networks = ["Network 1", "Network 2", "Network 3"]
+
 # Force redirect to HTTPS
 @app.before_request
 def force_https():
@@ -76,11 +79,15 @@ def start():
 def home():
     return render_template("login.html")
 
+@app.route('/result')
+def result():
+    return render_template("result.html")
+
 # Grabs the data upon clicking the submit button and puts it in a dictionary
 @app.route("/settings", methods=['POST', "GET"])
-def result():
-    settings = request.form.to_dict()
-    print(settings)
+def settings():
+    usersettings = request.form.to_dict()
+    print(usersettings)
     return render_template("configure.html")
 
 
@@ -93,6 +100,23 @@ def login():
 
 
     return render_template("configure.html")
+
+# Renders the configure page
+@app.route('/configure', methods=['GET', 'POST'])
+def configure():
+    if request.method == 'POST':
+        # Get form data
+        disk_space = request.form.get('disk_space')
+        num_cores = request.form.get('num_cores')
+        ram = request.form.get('ram')
+
+        # Process the form data or perform any necessary actions
+
+        # Render the result page with the received data
+        return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram)
+
+    # Render the configure page with the list of networks
+    return render_template('configure.html', networks=networks)
 
 # Run the app
 if __name__ == '__main__':
