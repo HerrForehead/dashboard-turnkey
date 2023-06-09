@@ -103,14 +103,14 @@
       var optionsForm = document.querySelector(".options-form");
       loginForm.style.display = "none";
       optionsForm.style.display = "block";
+
+      window.onload = function() {
+        showOptionsForm();
+      };
     }
   </script>
 </head>
 <body>
-  {% if networks %}
-  <script>showOptionsForm();</script>
-  {% endif %}
-
   <div class="header">
     <h1>Automatic Kubernetes Cluster Deployment</h1>
   </div>
