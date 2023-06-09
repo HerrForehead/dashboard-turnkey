@@ -48,6 +48,7 @@ def retrieve_network_devices(username, password):
                 networks = vds_vlan_folder.childEntity
                 for network in networks:
                     print_network(network, 0)
+                    print(network)
 
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -58,9 +59,6 @@ def retrieve_network_devices(username, password):
 
 # Create the app
 app = Flask(__name__)
-
-# Placeholder of networks until we can retrieve them from vSphere
-networks = ["Network 1", "Network 2", "Network 3"]
 
 # Force redirect to HTTPS
 @app.before_request
