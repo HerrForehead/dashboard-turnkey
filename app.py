@@ -77,11 +77,11 @@ def home():
     return render_template("login.html")
 
 # Grabs the data upon clicking the submit button and puts it in a dictionary
-@app.route("/result", methods=['POST', "GET"])
+@app.route("/settings", methods=['POST', "GET"])
 def result():
-    output = request.form.to_dict()
-    print(output)
-    return render_template("result.html")
+    settings = request.form.to_dict()
+    print(settings)
+    return render_template("configure.html")
 
 
 @app.route("/login", methods=['POST', "GET"])
@@ -92,7 +92,7 @@ def login():
     retrieve_network_devices(credentials['email'], credentials['password'])
 
 
-    return render_template("index.html")
+    return render_template("configure.html")
 
 # Run the app
 if __name__ == '__main__':
