@@ -98,10 +98,6 @@
     }
   </style>
   <script>
-    function validateForm() {
-      // Validation logic
-    }
-
     function showOptionsForm() {
       var loginForm = document.querySelector(".login-form");
       var optionsForm = document.querySelector(".options-form");
@@ -111,13 +107,17 @@
   </script>
 </head>
 <body>
+  {% if networks %}
+  <script>showOptionsForm();</script>
+  {% endif %}
+
   <div class="header">
     <h1>Automatic Kubernetes Cluster Deployment</h1>
   </div>
 
   <div class="dashboard">
     <div class="form-container options-form">
-      <form name="options_form" action="/settings" method="POST">
+      <form name="options_form" action="/result" method="POST">
         {% if networks %}
           {% for network in networks %}
             <input type="hidden" name="networks[]" value="{{ network }}">
