@@ -96,7 +96,6 @@ def login():
 
     print("Retrieving network devices...")
     retrieve_network_devices(credentials['email'], credentials['password'])
-    print(networks)
     print("Heading to configure page...")
 
 
@@ -117,7 +116,7 @@ def configure():
         return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram)
 
     # Render the configure page with the list of networks
-    return render_template('configure.html', networks=networks)
+    return render_template('configure.html')
 
 # Run the app
 if __name__ == '__main__':
