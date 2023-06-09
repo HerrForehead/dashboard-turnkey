@@ -4,7 +4,9 @@ import subprocess
 from pyVim import connect
 from flask import Flask, render_template, request, redirect
 
+# Add the networks to this list after retrieving them via retrieve_network_devices()
 networks = []
+
 
 def print_network(network, level):
     indent = '  ' * level
@@ -51,7 +53,7 @@ def retrieve_network_devices(username, password):
                 for network in networks:
                     print(network.name)
                     print_network(network, 0)
-                    networks.append(network.name)
+                    networks.append(str(network.name))
 
     except Exception as e:
         print(f"Error: {str(e)}")
