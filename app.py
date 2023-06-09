@@ -52,7 +52,7 @@ def retrieve_network_devices(username, password):
                 networks = vds_vlan_folder.childEntity
                 for network in networks:
                     #print(network.name)
-                    #networks.append("test")
+                    networks.append("test")
                     print_network(network, 0)
 
 
