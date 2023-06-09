@@ -53,7 +53,7 @@ def retrieve_network_devices(username, password):
                 for network in networks:
                     print(network.name)
                     print_network(network, 0)
-                    networks.append("'"+network.name+"'")
+                    networks.append('"'+network.name+'"')
 
     except Exception as e:
         print(f"Error: {str(e)}")
