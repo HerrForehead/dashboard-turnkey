@@ -96,7 +96,10 @@ def login():
     credentials = request.form.to_dict()
     print(credentials)
 
+    print("Retrieving network devices...")
     retrieve_network_devices(credentials['email'], credentials['password'])
+    print(networks)
+    print("Heading to configure page...")
 
 
     return render_template("configure.html")

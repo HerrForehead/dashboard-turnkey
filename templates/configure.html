@@ -6,7 +6,7 @@
 <body>
     <h1>Configure</h1>
 
-    <form action="{{ url_for('configure') }}" method="POST">
+    <form action="/configure" method="POST">
         <label for="network">Network:</label>
         <select id="network" name="network">
             {% for network in networks %}
