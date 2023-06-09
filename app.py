@@ -92,7 +92,7 @@ def login():
     retrieve_network_devices(credentials['email'], credentials['password'])
 
 
-    return render_template("login.html")
+    return render_template("index.html")
 
 # Run the app
 if __name__ == '__main__':
