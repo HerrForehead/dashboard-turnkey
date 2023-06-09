@@ -4,6 +4,8 @@ import subprocess
 from pyVim import connect
 from flask import Flask, render_template, request, redirect
 
+networks = []
+
 def print_network(network, level):
     indent = '  ' * level
     print(f"{indent}Network: {network.name}")
@@ -48,7 +50,7 @@ def retrieve_network_devices(username, password):
                 networks = vds_vlan_folder.childEntity
                 for network in networks:
                     print_network(network, 0)
-                    print(network)
+                    networks.append(network.name)
 
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -99,7 +101,7 @@ def login():
     print("Heading to configure page...")
 
 
-    return render_template("configure.html")
+    return render_template("configure.html", networks=networks)
 
 # Renders the configure page
 @app.route('/configure', methods=['GET', 'POST'])
