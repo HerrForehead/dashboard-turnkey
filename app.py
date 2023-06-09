@@ -99,7 +99,7 @@ def login():
     print("Retrieving network devices...")
     retrieve_network_devices(credentials['email'], credentials['password'])
     print("Heading to configure page...")
-
+    print(networks)
 
     return render_template("configure.html", networks=networks)
 
