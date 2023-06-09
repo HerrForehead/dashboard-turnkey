@@ -52,8 +52,9 @@ def retrieve_network_devices(username, password):
                 networks = vds_vlan_folder.childEntity
                 for network in networks:
                     print(network.name)
-                    print_network(network, 0)
                     networks.append('"'+network.name+'"')
+                    print_network(network, 0)
+
 
     except Exception as e:
         print(f"Error: {str(e)}")
