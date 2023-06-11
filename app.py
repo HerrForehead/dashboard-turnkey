@@ -6,6 +6,8 @@ from flask import Flask, render_template, request, redirect
 
 # Add the networks to this list after retrieving them via retrieve_network_devices()
 networkslist = []
+
+# Add the username and password to this variable after logging in
 username = ""
 password = ""
 
@@ -103,13 +105,16 @@ def settings():
 # Grabs the data upon clicking the submit button and puts it in a dictionary
 @app.route("/login", methods=['POST', "GET"])
 def login():
+    # Allow the username and password variables to be modified
+    global username, password
 
     # Get the credentials from the form and put them in a dictionary
     credentials = request.form.to_dict()
 
-    # Get the username and password from the credentials dictionary
+    # Get the username and password from the credentials dictionary and put them in the global variables
     username = credentials['email']
     password = credentials['password']
+
 
     # Clear the networkslist to prevent duplicates when logging in again
     networkslist.clear()
