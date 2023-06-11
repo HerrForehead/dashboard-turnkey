@@ -92,29 +92,39 @@ def result():
 # Grabs the data upon clicking the submit button and puts it in a dictionary
 @app.route("/settings", methods=['POST', "GET"])
 def settings():
+
+    # Get the credentials from the form and put them in a dictionary
     usersettings = request.form.to_dict()
+
     print(usersettings)
+    
     return render_template("configure.html")
 
-
+# Grabs the data upon clicking the submit button and puts it in a dictionary
 @app.route("/login", methods=['POST', "GET"])
 def login():
+
+    # Get the credentials from the form and put them in a dictionary
     credentials = request.form.to_dict()
-    print(credentials)
+
+    # Get the username and password from the credentials dictionary
     username = credentials['email']
     password = credentials['password']
 
-    print("Retrieving network devices...")
-    retrieve_network_devices(credentials['email'], credentials['password'])
-    print("Heading to configure page...")
-    print(networkslist)
+    # Clear the networkslist to prevent duplicates when logging in again
+    networkslist.clear()
 
+    # Retrieve the networks and put them in the networkslist
+    retrieve_network_devices(credentials['email'], credentials['password'])
+
+    # Render the configure page with the list of networks as an option
     return render_template("configure.html", networks=networkslist)
 
 # Renders the configure page
 @app.route('/configure', methods=['GET', 'POST'])
 def configure():
     if request.method == 'POST':
+
         # Get form data
         network = request.form.get('network')
         disk_space = request.form.get('disk_space')
