@@ -125,6 +125,9 @@ def login():
 def configure():
     if request.method == 'POST':
 
+        # Get the username and print it
+        username = username
+
         # Get form data
         network = request.form.get('network')
         disk_space = request.form.get('disk_space')
