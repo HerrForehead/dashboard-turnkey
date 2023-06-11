@@ -112,6 +112,7 @@ def login():
 def configure():
     if request.method == 'POST':
         # Get form data
+        network = request.form.get('network')
         disk_space = request.form.get('disk_space')
         num_cores = request.form.get('num_cores')
         ram = request.form.get('ram')
@@ -119,7 +120,7 @@ def configure():
         # Process the form data or perform any necessary actions
 
         # Render the result page with the received data
-        return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram)
+        return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram, network=network)
 
     # Render the configure page with the list of networks
     return render_template('configure.html')
