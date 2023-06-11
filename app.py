@@ -6,6 +6,8 @@ from flask import Flask, render_template, request, redirect
 
 # Add the networks to this list after retrieving them via retrieve_network_devices()
 networkslist = []
+username = ""
+password = ""
 
 
 def print_network(network, level):
@@ -99,6 +101,8 @@ def settings():
 def login():
     credentials = request.form.to_dict()
     print(credentials)
+    username = credentials['email']
+    password = credentials['password']
 
     print("Retrieving network devices...")
     retrieve_network_devices(credentials['email'], credentials['password'])
@@ -120,7 +124,7 @@ def configure():
         # Process the form data or perform any necessary actions
 
         # Render the result page with the received data
-        return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram, network=network)
+        return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram, network=network, username=username)
 
     # Render the configure page with the list of networks
     return render_template('configure.html')

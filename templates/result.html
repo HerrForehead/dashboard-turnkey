@@ -2,13 +2,55 @@
 <html>
 <head>
     <title>Result</title>
+    <style>
+        body {
+            background-color: #f5f6f8;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1a237e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .result-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        .result-container h1 {
+            font-size: 24px;
+            color: #1a237e;
+            margin-bottom: 20px;
+        }
+
+        .result-container p {
+            font-size: 16px;
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
+<div class="header">
     <h1>Configuration Result</h1>
+</div>
 
+<div class="result-container">
+    <p>You chose the following settings to be installed on account {{ username }}.</p>
+    <br>
     <p>Selected network: {{ network }}</p>
     <p>Disk Space: {{ disk_space }}</p>
     <p>Number of Cores: {{ num_cores }}</p>
     <p>RAM: {{ ram }}</p>
+</div>
 </body>
 </html>
