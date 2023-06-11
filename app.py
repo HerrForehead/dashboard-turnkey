@@ -126,7 +126,7 @@ def configure():
     if request.method == 'POST':
 
         # Get the username and print it
-        username = username
+        print(username)
 
         # Get form data
         network = request.form.get('network')
