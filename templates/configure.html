@@ -2,32 +2,116 @@
 <html>
 <head>
     <title>Configure</title>
+    <style>
+        body {
+            background-color: #f5f6f8;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1a237e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #1a237e;
+        }
+
+        .form-group input[type="text"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #1a237e;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input[type="text"]::placeholder {
+            color: #aaa;
+        }
+
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a237e' width='18px' height='18px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 18px 18px;
+            padding-right: 30px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #1a237e;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #0d133d;
+        }
+    </style>
 </head>
 <body>
-    <h1>Configure</h1>
+<div class="header">
+    <h1>Automatic Kubernetes Cluster Deployment</h1>
+</div>
 
+<div class="dashboard">
     <form action="/configure" method="POST">
-        <label for="network">Network:</label>
-        <select id="network" name="network">
-            {% for network in networks %}
-            <option value="{{ network }}">{{ network }}</option>
-            {% endfor %}
-        </select>
-        <br>
+        <div class="form-group">
+            <label for="network">Network:</label>
+            <select id="network" name="network">
+                {% for network in networks %}
+                <option value="{{ network }}">{{ network }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-        <label for="disk_space">Disk Space:</label>
-        <input type="text" id="disk_space" name="disk_space">
-        <br>
+        <div class="form-group">
+            <label for="disk_space">Disk Space:</label>
+            <input type="text" id="disk_space" name="disk_space">
+        </div>
 
-        <label for="num_cores">Number of Cores:</label>
-        <input type="text" id="num_cores" name="num_cores">
-        <br>
+        <div class="form-group">
+            <label for="num_cores">Number of Cores:</label>
+            <input type="text" id="num_cores" name="num_cores">
+        </div>
 
-        <label for="ram">RAM:</label>
-        <input type="text" id="ram" name="ram">
-        <br>
+        <div class="form-group">
+            <label for="ram">RAM:</label>
+            <input type="text" id="ram" name="ram">
+        </div>
 
-        <input type="submit" value="Submit">
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
     </form>
+</div>
 </body>
 </html>
