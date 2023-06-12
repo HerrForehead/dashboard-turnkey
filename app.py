@@ -139,10 +139,13 @@ def configure():
         num_cores = request.form.get('num_cores')
         ram = request.form.get('ram')
 
-        # Process the form data or perform any necessary actions
+        # Run the ansible playbook using os.system and pass the form data as extra variables in a thread
+        threading.Thread(target=os.system, args=(f"ansible-playbook -i inventory.ini playbook.yml --extra-vars 'network={network} disk_space={disk_space} num_cores={num_cores} ram={ram} username={username} password={password}'",)).start()
 
         # Render the result page with the received data
         return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram, network=network, username=username)
+    
+
 
     # Render the configure page with the list of networks
     return render_template('configure.html')
