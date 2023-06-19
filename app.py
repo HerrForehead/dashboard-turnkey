@@ -140,7 +140,7 @@ def configure():
         ram = request.form.get('ram')
 
         # Run the ansible playbook using os.system and pass the form data as extra variables in a thread
-        threading.Thread(target=os.system, args=(f"/home/student/.local/bin/ansible-playbook -i inventory.ini /home/student/turn-key-roll-out-playbooks/setupK8SVM.yml --extra-vars 'vm_net_name={network} vm_disk_gb={disk_space} vm_hw_cpu_n={num_cores} vm_hw_ram_mb={ram} vcenter_username={username} vcenter_password={password}'",)).start()
+        threading.Thread(target=os.system, args=(f"ansible-playbook -i inventory.ini /home/student/turn-key-roll-out-playbooks/setupK8SVM.yml --extra-vars 'vm_net_name={network} vm_disk_gb={disk_space} vm_hw_cpu_n={num_cores} vm_hw_ram_mb={ram} vcenter_username={username} vcenter_password={password}'",)).start()
 
         # Render the result page with the received data
         return render_template('result.html', disk_space=disk_space, num_cores=num_cores, ram=ram, network=network, username=username)
